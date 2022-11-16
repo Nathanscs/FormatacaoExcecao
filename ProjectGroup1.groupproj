@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1EC2993C-C752-42C3-9506-2293FA3755AF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\InterfaceGrafica\DelphiIniciante.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Aula06.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiIniciante">
+        <MSBuild Projects="..\InterfaceGrafica\DelphiIniciante.dproj"/>
+    </Target>
+    <Target Name="DelphiIniciante:Clean">
+        <MSBuild Projects="..\InterfaceGrafica\DelphiIniciante.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiIniciante:Make">
+        <MSBuild Projects="..\InterfaceGrafica\DelphiIniciante.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Aula06">
+        <MSBuild Projects="Aula06.dproj"/>
+    </Target>
+    <Target Name="Aula06:Clean">
+        <MSBuild Projects="Aula06.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Aula06:Make">
+        <MSBuild Projects="Aula06.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiIniciante;Aula06"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiIniciante:Clean;Aula06:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiIniciante:Make;Aula06:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
